@@ -1,0 +1,55 @@
+version: '3.8'
+
+volumes:
+  mysql_store:
+  go_path:
+
+networks:
+  default:
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: ./docker/frontend/Dockerfile
+    volumes:
+      - ./frontend:/frontend
+      - /frontend/node_modules
+    ports:
+      - '3000:3000'
+    stdin_open: true
+    tty: true
+    environment:
+      - TZ=Asia/Tokyo
+    networks:
+      - default
+
+  backend:
+    build:
+      context: .
+      dockerfile: ./docker/backend/Dockerfile
+    volumes:
+      - ./backend:/go/src/backend
+      - go_path:/go
+    ports:
+      - '8080:8080'
+    stdin_open: true
+    tty: true
+    depends_on:
+      - db
+    networks:
+      - default
+
+  db:
+    image: mysql:5.7
+    container_name: db_mysql
+    volumes:
+      - mysql_store:/const/lib/mysql
+      - ./db/my.cnf:/etc/mysql/conf.d/my.cnf
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - 3306:3306
+    networks:
+      - default
