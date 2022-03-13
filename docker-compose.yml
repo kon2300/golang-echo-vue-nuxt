@@ -17,6 +17,7 @@ services:
       - /frontend/node_modules
     ports:
       - '3000:3000'
+      - '24678:24678'
     stdin_open: true
     tty: true
     environment:

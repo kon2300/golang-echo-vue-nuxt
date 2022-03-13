@@ -7,7 +7,6 @@ RUN apk upgrade --update && \
 
 COPY ./backend /go/src/backend
 
-RUN go mod tidy && \
-    go install github.com/cosmtrek/air@v1.27.3
+RUN go install github.com/labstack/echo/v4
 
-CMD ["air", "-c", ".air.toml"]
+# CMD ["air"]

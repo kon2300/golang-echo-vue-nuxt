@@ -20,7 +20,7 @@
   "settings": {},
 
   // Add the IDs of extensions you want installed when the container is created.
-  "extensions": ["johnsoncodehk.volar", "formulahendry.auto-close-tag", "formulahendry.auto-rename-tag", "dbaeumer.vscode-eslint", "ecmel.vscode-html-css", "MS-CEINTL.vscode-language-pack-ja", "esbenp.prettier-vscode", "christian-kohler.path-intellisense"]
+  "extensions": ["johnsoncodehk.volar", "dbaeumer.vscode-eslint", "ecmel.vscode-html-css", "csstools.postcss", "esbenp.prettier-vscode", "christian-kohler.path-intellisense", "bradlc.vscode-tailwindcss"]
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
