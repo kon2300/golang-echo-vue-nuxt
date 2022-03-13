@@ -7,5 +7,3 @@ RUN apk update && apk add git
 COPY frontend/package*.json .
 
 RUN yarn install
-
-CMD ["yarn", "dev"]
